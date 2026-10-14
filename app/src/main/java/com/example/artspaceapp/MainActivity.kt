@@ -63,13 +63,12 @@ fun ArtSpaceApp() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .safeDrawingPadding()
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
         ) {
+            Spacer(modifier = Modifier.weight(0.6f))
             ImageSection(Modifier.weight(1f))
-            Spacer(modifier = Modifier.heightIn(16.dp))
+            Spacer(modifier = Modifier.heightIn(80.dp))
             DescriptionSection()
             Spacer(modifier = Modifier.heightIn(16.dp))
             ButtonNavigationSection()
