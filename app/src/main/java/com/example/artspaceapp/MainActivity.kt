@@ -27,6 +27,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -56,6 +60,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp() {
+    var currentArtwork by remember { mutableStateOf(Artwork.MONA_LISA) }
+    val navigatorArtwork = remember {ArtNavigator()}
+    val currentArtData = navigatorArtwork.getArtData(currentArtwork)
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background,
@@ -67,17 +75,24 @@ fun ArtSpaceApp() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(modifier = Modifier.weight(0.6f))
-            ImageSection(Modifier.weight(1f))
+            ImageSection(Modifier.weight(1f), currentArtData = currentArtData)
             Spacer(modifier = Modifier.heightIn(80.dp))
-            DescriptionSection()
+            DescriptionSection(currentArtData = currentArtData)
             Spacer(modifier = Modifier.heightIn(16.dp))
-            ButtonNavigationSection()
+            ButtonNavigationSection(
+                onPreviousClick = {
+                    currentArtwork = navigatorArtwork.switchArtwork(currentArtwork, false)
+                },
+                onNextClick = {
+                    currentArtwork = navigatorArtwork.switchArtwork(currentArtwork, true)
+                },
+            )
         }
     }
 }
 
 @Composable
-private fun ImageSection(modifier: Modifier = Modifier) {
+private fun ImageSection(modifier: Modifier = Modifier, currentArtData: ArtData) {
     Box(
         modifier = Modifier
             .fillMaxWidth(0.9f)
@@ -88,14 +103,14 @@ private fun ImageSection(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
     ) {
         Image(
-            painter = painterResource(id = R.drawable.mona_lisa_art),
+            painter = painterResource(currentArtData.image),
             contentDescription = null
         )
     }
 }
 
 @Composable
-private fun DescriptionSection() {
+private fun DescriptionSection(currentArtData: ArtData) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -107,16 +122,16 @@ private fun DescriptionSection() {
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = stringResource(R.string.artwork_title_mona),
+                text = stringResource(currentArtData.title),
                 fontSize = MaterialTheme.typography.titleLarge.fontSize
             )
             Text(
                 text = buildAnnotatedString {
                     withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-                        append(stringResource(R.string.artwork_artist_mona))
+                        append(stringResource(currentArtData.artist))
                     }
                     append(" ")
-                    append(stringResource(R.string.artwork_year_mona))
+                    append(stringResource(currentArtData.year))
                 }
             )
         }
@@ -124,7 +139,10 @@ private fun DescriptionSection() {
 }
 
 @Composable
-private fun ButtonNavigationSection() {
+private fun ButtonNavigationSection(
+    onPreviousClick: () -> Unit,
+    onNextClick: () -> Unit,
+) {
     val buttonColors = ButtonDefaults.buttonColors(
         containerColor = colorResource(R.color.button_blue),
     )
@@ -135,7 +153,7 @@ private fun ButtonNavigationSection() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Button(
-            onClick = { /*TODO*/ },
+            onClick = onPreviousClick,
             colors = buttonColors,
             modifier = Modifier.width(150.dp)
         ) {
@@ -144,7 +162,7 @@ private fun ButtonNavigationSection() {
             )
         }
         Button(
-            onClick = { /*TODO*/ },
+            onClick = onNextClick,
             colors = buttonColors,
             modifier = Modifier.width(150.dp)
         ) {

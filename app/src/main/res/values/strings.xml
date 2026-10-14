@@ -5,4 +5,8 @@
     <string name="artwork_year_mona">(c. 1503)</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
+
+    <string name="artwork_title_night">Starry Night</string>
+    <string name="artwork_artist_night">Vincent van Gogh</string>
+    <string name="artwork_year_night">(1889)</string>
 </resources>
