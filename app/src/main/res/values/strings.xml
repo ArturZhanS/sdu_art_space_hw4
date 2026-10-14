@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ArtSpaceApp</string>
+    <string name="artwork_title">Martin Eden</string>
+    <string name="artwork_artist">Jack London</string>
+    <string name="artwork_year">(1909)</string>
+    <string name="artwork_description">Book cover of Martin Eden by Jack London, 1909</string>
 </resources>
