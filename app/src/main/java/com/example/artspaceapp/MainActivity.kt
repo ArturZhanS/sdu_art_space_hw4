@@ -15,9 +15,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -68,25 +70,35 @@ fun ArtSpaceApp() {
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background,
     ) {
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            contentAlignment = Alignment.Center
         ) {
-            Spacer(modifier = Modifier.weight(0.6f))
-            ImageSection(Modifier.weight(1f), currentArtData = currentArtData)
-            Spacer(modifier = Modifier.heightIn(80.dp))
-            DescriptionSection(currentArtData = currentArtData)
-            Spacer(modifier = Modifier.heightIn(16.dp))
-            ButtonNavigationSection(
-                onPreviousClick = {
-                    currentArtwork = navigatorArtwork.switchArtwork(currentArtwork, false)
-                },
-                onNextClick = {
-                    currentArtwork = navigatorArtwork.switchArtwork(currentArtwork, true)
-                },
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth(0.38f)
+            ) {
+                ImageSection(currentArtData = currentArtData, modifier = Modifier.fillMaxWidth().weight(1f))
+                Spacer(modifier = Modifier.height(12.dp))
+                DescriptionSection(currentArtData = currentArtData)
+            }
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.BottomCenter
+            ) {
+                ButtonNavigationSection(
+                    onPreviousClick = {
+                        currentArtwork = navigatorArtwork.switchArtwork(currentArtwork, false)
+                    },
+                    onNextClick = {
+                        currentArtwork = navigatorArtwork.switchArtwork(currentArtwork, true)
+                    },
+                )
+            }
         }
     }
 }
@@ -104,7 +116,8 @@ private fun ImageSection(modifier: Modifier = Modifier, currentArtData: ArtData)
     ) {
         Image(
             painter = painterResource(currentArtData.image),
-            contentDescription = null
+            contentDescription = null,
+            modifier = modifier.size(444.dp)
         )
     }
 }
@@ -114,7 +127,8 @@ private fun DescriptionSection(currentArtData: ArtData) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 15.dp),
+            .padding(horizontal = 24.dp)
+            .padding(bottom = 48.dp),
         color = colorResource(R.color.description_background),
         shape = RoundedCornerShape(8.dp)
     ) {
@@ -148,7 +162,9 @@ private fun ButtonNavigationSection(
     )
 
     Row(
-        modifier = Modifier.fillMaxWidth().padding(15.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 32.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
