@@ -49,9 +49,24 @@ class ArtNavigator() {
                 artist = R.string.artwork_artist_night,
                 year = R.string.artwork_year_night
             )
-            Artwork.GIRL_WITH_A_PEARL_EARRING -> TODO()
-            Artwork.WANDERER_ABOVE_THE_SEA_OF_FOG -> TODO()
-            Artwork.NINTH_WAVE -> TODO()
+            Artwork.GIRL_WITH_A_PEARL_EARRING -> ArtData(
+                image = R.drawable.girl_with_a_pearl_earring,
+                title = R.string.artwork_title_pearl,
+                artist = R.string.artwork_artist_pearl,
+                year = R.string.artwork_year_pearl
+            )
+            Artwork.WANDERER_ABOVE_THE_SEA_OF_FOG -> ArtData(
+                image = R.drawable.wanderer_above_the_sea_of_fog,
+                title = R.string.artwork_title_wanderer,
+                artist = R.string.artwork_artist_wanderer,
+                year = R.string.artwork_year_wanderer
+            )
+            Artwork.NINTH_WAVE -> ArtData(
+                image = R.drawable.ninth_wave,
+                title = R.string.artwork_title_ninth,
+                artist = R.string.artwork_artist_ninth,
+                year = R.string.artwork_year_ninth
+            )
         }
 
     }

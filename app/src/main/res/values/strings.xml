@@ -2,7 +2,7 @@
     <string name="app_name">ArtSpaceApp</string>
     <string name="artwork_title_mona">Mona Lisa</string>
     <string name="artwork_artist_mona">Leonardo da Vinci</string>
-    <string name="artwork_year_mona">(c. 1503)</string>
+    <string name="artwork_year_mona">(c. 1503-1519)</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
 
@@ -15,10 +15,10 @@
     <string name="artwork_year_pearl">(c. 1665)</string>
 
     <string name="artwork_title_wanderer">Wanderer Above the Sea of Fog</string>
-    <string name="artwork_artist_wanderer">Paul Cézanne</string>
+    <string name="artwork_artist_wanderer">Caspar David Friedrich</string>
     <string name="artwork_year_wanderer">(c. 1818) </string>
 
-    <string name="artwork_title_ninth">9th Wave</string>
+    <string name="artwork_title_ninth">Ninth Wave</string>
     <string name="artwork_artist_ninth">Ivan Aivazovsky</string>
     <string name="artwork_year_ninth">(1850)</string>
 </resources>
