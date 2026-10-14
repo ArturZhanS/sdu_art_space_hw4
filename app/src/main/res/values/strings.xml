@@ -3,4 +3,6 @@
     <string name="artwork_title_mona">Mona Lisa</string>
     <string name="artwork_artist_mona">Leonardo da Vinci</string>
     <string name="artwork_year_mona">(c. 1503)</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>

@@ -10,13 +10,18 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -58,13 +63,16 @@ fun ArtSpaceApp() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .safeDrawingPadding()
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.Center
         ) {
-            ImageSection()
-            Spacer(modifier = Modifier.heightIn(100.dp))
+            ImageSection(Modifier.weight(1f))
+            Spacer(modifier = Modifier.heightIn(16.dp))
             DescriptionSection()
+            Spacer(modifier = Modifier.heightIn(16.dp))
+            ButtonNavigationSection()
         }
     }
 }
@@ -111,6 +119,38 @@ private fun DescriptionSection() {
                     append(" ")
                     append(stringResource(R.string.artwork_year_mona))
                 }
+            )
+        }
+    }
+}
+
+@Composable
+private fun ButtonNavigationSection() {
+    val buttonColors = ButtonDefaults.buttonColors(
+        containerColor = colorResource(R.color.button_blue),
+    )
+
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(15.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Button(
+            onClick = { /*TODO*/ },
+            colors = buttonColors,
+            modifier = Modifier.width(150.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.previous),
+            )
+        }
+        Button(
+            onClick = { /*TODO*/ },
+            colors = buttonColors,
+            modifier = Modifier.width(150.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.next),
             )
         }
     }
