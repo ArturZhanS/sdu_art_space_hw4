@@ -9,4 +9,16 @@
     <string name="artwork_title_night">Starry Night</string>
     <string name="artwork_artist_night">Vincent van Gogh</string>
     <string name="artwork_year_night">(1889)</string>
+
+    <string name="artwork_title_pearl">Girl with a Pearl Earring</string>"
+    <string name="artwork_artist_pearl">Johannes Vermeer</string>
+    <string name="artwork_year_pearl">(c. 1665)</string>
+
+    <string name="artwork_title_wanderer">Wanderer Above the Sea of Fog</string>
+    <string name="artwork_artist_wanderer">Paul Cézanne</string>
+    <string name="artwork_year_wanderer">(c. 1818) </string>
+
+    <string name="artwork_title_ninth">9th Wave</string>
+    <string name="artwork_artist_ninth">Ivan Aivazovsky</string>
+    <string name="artwork_year_ninth">(1850)</string>
 </resources>
